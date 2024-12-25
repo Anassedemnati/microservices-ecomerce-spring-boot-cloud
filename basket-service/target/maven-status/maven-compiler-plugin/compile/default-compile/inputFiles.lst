@@ -1,0 +1,7 @@
+/Users/mac/Documents/springBoot/microservices-ecomerce/basket-service/src/main/java/com/example/basketservice/config/RedisConfig.java
+/Users/mac/Documents/springBoot/microservices-ecomerce/basket-service/src/main/java/com/example/basketservice/model/BasketItem.java
+/Users/mac/Documents/springBoot/microservices-ecomerce/basket-service/src/main/java/com/example/basketservice/service/BasketService.java
+/Users/mac/Documents/springBoot/microservices-ecomerce/basket-service/src/main/java/com/example/basketservice/model/ShoppingCart.java
+/Users/mac/Documents/springBoot/microservices-ecomerce/basket-service/src/main/java/com/example/basketservice/repository/BasketRepository.java
+/Users/mac/Documents/springBoot/microservices-ecomerce/basket-service/src/main/java/com/example/basketservice/Application.java
+/Users/mac/Documents/springBoot/microservices-ecomerce/basket-service/src/main/java/com/example/basketservice/controller/BasketController.java

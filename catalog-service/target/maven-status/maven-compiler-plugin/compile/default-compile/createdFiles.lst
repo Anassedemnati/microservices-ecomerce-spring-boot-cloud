@@ -1,0 +1,6 @@
+com/example/catalogservice/model/Product.class
+com/example/catalogservice/service/ProductService.class
+com/example/catalogservice/Application.class
+com/example/catalogservice/controller/ProductController.class
+com/example/catalogservice/repository/ProductRepository.class
+com/example/catalogservice/model/Product$ProductBuilder.class
