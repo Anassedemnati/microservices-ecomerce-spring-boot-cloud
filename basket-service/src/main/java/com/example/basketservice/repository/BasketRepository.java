@@ -1,6 +1,5 @@
 package com.example.basketservice.repository;
 
-import com.example.basketservice.model.BasketItem;
 import com.example.basketservice.model.ShoppingCart;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;

@@ -1,5 +1,7 @@
 package com.example.basketservice.controller;
 
+import com.example.basketservice.events.BasketCheckoutEvent;
+import com.example.basketservice.helpers.mapper.BasketCheckoutMapper;
 import com.example.basketservice.model.BasketItem;
 import com.example.basketservice.model.ShoppingCart;
 import com.example.basketservice.requests.BasketCheckoutRequest;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class BasketController {
     private final BasketService basketService;
-    private final KafkaTemplate<String, BasketCheckoutRequest> kafkaTemplate;
+    private final KafkaTemplate<String, BasketCheckoutEvent> kafkaTemplate;
 
     @GetMapping("/{userName}")
     public ShoppingCart getBasket(@PathVariable String userName) {
@@ -58,11 +60,12 @@ public class BasketController {
 
         String topicName = "checkout-events";
 
-        kafkaTemplate.send(topicName, basketCheckout.getUserName(), basketCheckout)
-                .thenAccept(result -> log.info("Event sent successfully for user: {}", basketCheckout.getUserName()))
+        BasketCheckoutEvent basketCheckoutEvent = BasketCheckoutMapper.toBasketCheckoutEvent(basketCheckout, basket.getItems());
+        kafkaTemplate.send(topicName, basketCheckoutEvent.getUserName(), basketCheckoutEvent)
+                .thenAccept(result -> log.info("Event sent successfully for user: {}", basketCheckoutEvent.getUserName()))
                 .exceptionally(ex -> {
-                    log.error("Failed to send event for user: {}", basketCheckout.getUserName(), ex);
-                    throw new IllegalArgumentException("Failed to send event for user: "  + basketCheckout.getUserName() + " " + ex.getMessage());
+                    log.error("Failed to send event for user: {}", basketCheckoutEvent.getUserName(), ex);
+                    throw new IllegalArgumentException("Failed to send event for user: "  + basketCheckoutEvent.getUserName() + " " + ex.getMessage());
                 });
 
         // remove the basket

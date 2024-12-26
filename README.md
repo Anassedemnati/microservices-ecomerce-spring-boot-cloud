@@ -1,4 +1,5 @@
-# Spring Boot Microservices
+# Spring Boot Microservices E-Commerce Platform
+
 
 This repository contains a set of Spring Boot microservices that are part of an e-commerce platform. The project includes the following services:
 

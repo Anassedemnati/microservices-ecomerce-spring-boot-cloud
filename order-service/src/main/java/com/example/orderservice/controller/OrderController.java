@@ -14,11 +14,11 @@ import java.util.List;
 public class OrderController {
     private final OrderService orderService;
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Order createOrder(@RequestBody Order order) {
-        return orderService.createOrder(order);
-    }
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Order createOrder(@RequestBody Order order) {
+//        return orderService.createOrder(order);
+//    }
 
     @GetMapping("/{id}")
     public Order getOrder(@PathVariable Long id) {
@@ -33,6 +33,6 @@ public class OrderController {
 
     @GetMapping
     public List<Order> getAllOrders(@RequestParam String userName) {
-        return orderService.getAllOrders();
+        return orderService.getAllOrders(userName);
     }
 }
